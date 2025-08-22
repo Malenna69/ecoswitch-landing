@@ -21,18 +21,24 @@ function Badge({
     info: "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/20 dark:text-blue-300 dark:border-blue-900",
   } as const;
   return (
-    <span className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-sm ${map[tone]}`}>
+    <span
+      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-sm ${map[tone]}`}
+    >
       {children}
     </span>
   );
 }
 
-export default function MerciPage({
-  searchParams,
-}: {
-  searchParams?: { doi?: string; already?: string };
-}) {
-  const isDoi = searchParams?.doi === "1";        // ?doi=1 si Double Opt-In confirmé
+// ✅ Typage explicite des props pour Next.js
+type MerciPageProps = {
+  searchParams?: {
+    doi?: string;
+    already?: string;
+  };
+};
+
+export default function MerciPage({ searchParams }: MerciPageProps) {
+  const isDoi = searchParams?.doi === "1"; // ?doi=1 si Double Opt-In confirmé
   const isAlready = searchParams?.already === "1"; // ?already=1 si email déjà présent
 
   return (
@@ -54,31 +60,46 @@ export default function MerciPage({
 
       <section className="max-w-3xl mx-auto px-6 py-16">
         <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-8 text-center dark:bg-neutral-900 dark:border-neutral-800">
-          {/* Icône “check” en SVG, no-deps */}
+          {/* Icône “check” en SVG */}
           <div className="mx-auto mb-4 w-14 h-14 rounded-full flex items-center justify-center bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
-              <path d="M20 7L9 18l-5-5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden
+            >
+              <path
+                d="M20 7L9 18l-5-5"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </div>
 
-          <h1 className="text-3xl font-extrabold">Merci, votre inscription est confirmée.</h1>
+          <h1 className="text-3xl font-extrabold">
+            Merci, votre inscription est confirmée.
+          </h1>
 
           <p className="mt-3 text-gray-600 dark:text-gray-300">
-            Nous vous tiendrons informé(e) des étapes clés : ouverture du programme testeur,
-            mises à jour de la démo scientifique et lancement commercial.
+            Nous vous tiendrons informé(e) des étapes clés : ouverture du
+            programme testeur, mises à jour de la démo scientifique et lancement
+            commercial.
           </p>
 
           <div className="mt-5 flex flex-col items-center gap-2">
             {isDoi ? (
-              <Badge>
-                ✅ Double Opt-In confirmé — email vérifié
-              </Badge>
+              <Badge>✅ Double Opt-In confirmé — email vérifié</Badge>
             ) : (
               <Badge tone="info">ℹ️ Inscription enregistrée</Badge>
             )}
 
             {isAlready && (
-              <Badge tone="info">Vous étiez déjà inscrit(e) — profil à jour</Badge>
+              <Badge tone="info">
+                Vous étiez déjà inscrit(e) — profil à jour
+              </Badge>
             )}
           </div>
 
@@ -98,7 +119,8 @@ export default function MerciPage({
           </div>
 
           <p className="text-xs text-gray-500 mt-6 dark:text-gray-500">
-            Aucune donnée n’est partagée avec des tiers. Désinscription en un clic à tout moment.
+            Aucune donnée n’est partagée avec des tiers. Désinscription en un
+            clic à tout moment.
           </p>
         </div>
       </section>
