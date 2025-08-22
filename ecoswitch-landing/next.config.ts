@@ -1,7 +1,12 @@
+// next.config.ts
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      { source: "/", destination: "/landing-b", permanent: false },
+    ];
+  },
 };
 
 export default nextConfig;
