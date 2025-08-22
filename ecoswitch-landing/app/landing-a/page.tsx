@@ -2,130 +2,88 @@
 
 import Link from "next/link";
 
-export default function LandingA() {
+export default function LandingB() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-[#F7F9FC] text-[#111827] dark:bg-neutral-950 dark:text-neutral-100">
       {/* Header */}
-      <header className="fixed top-0 inset-x-0 z-40 border-b border-white/10 bg-black/40 backdrop-blur">
-        <div className="mx-auto max-w-6xl px-6 h-14 flex items-center justify-between">
-          <Link href="/" className="font-bold tracking-widest">ECOSWITCH</Link>
-          <nav className="flex items-center gap-6 text-sm">
-            <a href="#features" className="hover:opacity-80">Fonctionnalités</a>
-            <a href="#demo" className="hover:opacity-80">Démo</a>
-            <a
-              href="#waitlist"
-              className="rounded-full border border-white/20 px-4 py-1.5 hover:bg-white hover:text-black transition"
-            >
-              Rejoindre
+      <header className="sticky top-0 z-30 bg-white/80 dark:bg-neutral-900/70 backdrop-blur border-b border-gray-200 dark:border-neutral-800">
+        <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-md border-2 border-dashed border-emerald-300 bg-emerald-50 dark:bg-emerald-900/20" />
+            <span className="font-extrabold tracking-tight">EcoSwitch</span>
+          </Link>
+          <nav className="flex items-center gap-3">
+            <a href="#demo" className="text-sm px-3 py-2 rounded-lg border border-gray-200 bg-white shadow-sm hover:bg-gray-50 dark:bg-neutral-900 dark:border-neutral-800 dark:hover:bg-neutral-800 transition">
+              Démo
+            </a>
+            <a href="#waitlist" className="text-sm px-3 py-2 rounded-lg border border-emerald-300 text-emerald-700 bg-white hover:bg-emerald-50 dark:bg-neutral-900 dark:text-emerald-300 dark:border-neutral-700 dark:hover:bg-neutral-800 transition">
+              Waitlist
             </a>
           </nav>
         </div>
       </header>
 
-      {/* HERO */}
-      <section className="relative h-[100svh] flex items-center">
-        <div className="mx-auto max-w-6xl px-6 w-full">
-          <div className="max-w-2xl">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
-              L’Assistant Énergie qui
-              <br />
-              <span className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">
-                optimise votre foyer
-              </span>.
-            </h1>
-            <p className="mt-5 text-white/70 text-lg">
-              Mesurez, comprenez, réduisez. Des recommandations neutres, chiffrées,
-              adaptées à votre habitat.
-            </p>
-            <div className="mt-8 flex gap-3">
-              <a
-                href="#waitlist"
-                className="rounded-full bg-white text-black px-6 py-3 font-semibold hover:bg-white/90 transition"
-              >
-                Rejoindre la liste
-              </a>
-              <a
-                href="#demo"
-                className="rounded-full border border-white/30 px-6 py-3 font-semibold hover:bg-white/10 transition"
-              >
-                Voir la démo
-              </a>
-            </div>
-          </div>
+      {/* Hero */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
+          Ne devinez plus — <span className="text-emerald-600">mesurez</span>.
+        </h1>
+        <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl">
+          L’Assistant Énergie qui compare en local <b>PAC seule</b>, <b>PAC hybride</b> ou
+          <b> chaudière conservée</b> et recommande objectivement la meilleure solution
+          (économie & CO₂).
+        </p>
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <a href="#waitlist" className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-semibold bg-emerald-600 text-white hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition">
+            Rejoindre la liste d’attente
+          </a>
+          <a href="#demo" className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-semibold border border-gray-200 text-gray-800 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:bg-neutral-900 dark:text-neutral-100 dark:border-neutral-800 dark:hover:bg-neutral-800 transition">
+            Voir la démo
+          </a>
         </div>
       </section>
 
-      {/* FEATURES */}
-      <section id="features" className="scroll-mt-20 py-20 border-t border-white/10">
-        <div className="mx-auto max-w-6xl px-6 grid sm:grid-cols-3 gap-6">
-          {[
-            ["Mesure temps réel", "Suivi clair : kWh, € et CO₂."],
-            ["Reco neutre", "PAC seule, hybride, ou conservation chaudière."],
-            ["Confidentialité", "Données privées, non revendues."],
-          ].map(([title, desc], i) => (
-            <div key={i} className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-              <h3 className="font-semibold">{title}</h3>
-              <p className="mt-2 text-sm text-white/70">{desc}</p>
-            </div>
-          ))}
+      {/* Démo */}
+      <section id="demo" className="max-w-6xl mx-auto px-6 py-12">
+        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:bg-neutral-900 dark:border-neutral-800">
+          <div className="aspect-[16/9] w-full rounded-xl bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/20 dark:to-emerald-900/10" />
+          <p className="text-sm text-gray-500 mt-3 dark:text-gray-400">
+            Aperçu interface — courbes de consommation, recommandations, simulation d’économies.
+          </p>
         </div>
       </section>
 
-      {/* DEMO */}
-      <section id="demo" className="scroll-mt-20 py-20 border-t border-white/10">
-        <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h2 className="text-3xl font-bold">Démo pédagogique</h2>
-            <p className="mt-3 text-white/70">
-              Comparez scénarios, coûts et ROI. Visualisez l’impact réel des changements.
-            </p>
-            <a
-              href="#waitlist"
-              className="mt-6 inline-block rounded-full bg-white text-black px-6 py-3 font-semibold hover:bg-white/90 transition"
-            >
-              Accéder en avant‑première
-            </a>
-          </div>
-          <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-            <div className="aspect-[16/9] rounded-xl bg-gradient-to-br from-white/10 to-emerald-400/10" />
-            <p className="text-xs text-white/60 mt-3">
-              Aperçu — courbes, comparatifs, verdict 🟢/🔵/🟠
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* WAITLIST */}
-      <section id="waitlist" className="scroll-mt-20 py-20 border-t border-white/10">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="text-3xl font-bold">Rejoindre la liste d’attente</h2>
-          <p className="mt-3 text-white/70">
-            Soyez informé(e) du pilote, des mises à jour de la démo et du lancement.
+      {/* Waitlist */}
+      <section id="waitlist" className="max-w-3xl mx-auto px-6 pb-20">
+        <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm dark:bg-neutral-900 dark:border-neutral-800">
+          <h2 className="text-2xl font-bold text-center">Rejoindre la liste</h2>
+          <p className="mt-2 text-center text-gray-600 dark:text-gray-300">
+            Laissez votre email pour être informé(e) du lancement et des étapes clés (programme testeur, démo, etc.).
           </p>
           <form onSubmit={(e) => e.preventDefault()} className="mt-6 grid gap-3 sm:grid-cols-[1fr_auto]">
             <input
               type="email"
               required
               placeholder="votre@email.com"
-              className="w-full rounded-full border border-white/20 bg-white/5 px-5 py-3 text-sm outline-none placeholder-white/40 focus:ring-2 focus:ring-white/40"
+              className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-emerald-400 dark:bg-neutral-950 dark:border-neutral-800"
             />
-            <button className="rounded-full bg-white text-black px-6 py-3 text-sm font-semibold hover:bg-white/90 transition">
+            <button className="rounded-xl bg-emerald-600 px-6 py-3 text-sm font-semibold text-white hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-400">
               S’inscrire
             </button>
           </form>
-          <p className="text-xs text-white/50 mt-4">
-            Aucune donnée partagée avec des tiers. Désinscription en un clic.
+          <p className="text-xs text-gray-500 mt-4 text-center dark:text-gray-500">
+            Aucune donnée n’est partagée avec des tiers. Désinscription en un clic à tout moment.
           </p>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/10 py-10">
-        <div className="mx-auto max-w-6xl px-6 text-sm text-white/60 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <footer className="border-t border-gray-200 dark:border-neutral-800 py-8">
+        <div className="max-w-6xl mx-auto px-6 text-sm text-gray-500 dark:text-gray-400 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div>© {new Date().getFullYear()} EcoSwitch</div>
           <div className="flex items-center gap-4">
-            <Link href="/" className="hover:text-white/80">Accueil</Link>
-            <Link href="/merci" className="hover:text-white/80">Merci</Link>
+            <Link href="/" className="hover:underline">Accueil</Link>
+            <Link href="/merci" className="hover:underline">Merci</Link>
           </div>
         </div>
       </footer>
