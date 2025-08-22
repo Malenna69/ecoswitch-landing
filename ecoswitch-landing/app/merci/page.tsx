@@ -29,17 +29,27 @@ function Badge({
   );
 }
 
-// ✅ Typage explicite des props pour Next.js
-type MerciPageProps = {
-  searchParams?: {
-    doi?: string;
-    already?: string;
-  };
-};
+// Helper pour prendre la 1re valeur d'un param (string | string[] | undefined)
+const first = (v: string | string[] | undefined) =>
+  Array.isArray(v) ? v[0] : v;
 
-export default function MerciPage({ searchParams }: MerciPageProps) {
-  const isDoi = searchParams?.doi === "1"; // ?doi=1 si Double Opt-In confirmé
-  const isAlready = searchParams?.already === "1"; // ?already=1 si email déjà présent
+type SearchParams = Promise<Record<string, string | string[] | undefined>>;
+type RouteParams = Promise<Record<string, string>>;
+
+export default async function MerciPage({
+  // Next 15: searchParams/params sont potentiellement des Promises
+  searchParams,
+  params, // non utilisé ici mais on reste compatible
+}: {
+  searchParams?: SearchParams;
+  params?: RouteParams;
+}) {
+  const sp = (await searchParams) ?? {};
+  const doi = first(sp.doi);
+  const already = first(sp.already);
+
+  const isDoi = doi === "1"; // ?doi=1 si Double Opt-In confirmé
+  const isAlready = already === "1"; // ?already=1 si email déjà présent
 
   return (
     <main className="min-h-screen bg-[#F7F9FC] text-[#111827] dark:bg-neutral-950 dark:text-neutral-100">
